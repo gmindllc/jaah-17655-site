@@ -1,8 +1,5 @@
 name: Deploy site to Pages
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 permissions:
   contents: read
   pages: write
@@ -12,6 +9,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
