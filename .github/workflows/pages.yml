@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
